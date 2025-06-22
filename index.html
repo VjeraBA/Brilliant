@@ -1,384 +1,376 @@
-{\rtf1\mac\ansicpg10000\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaktivni Prikaz: Brilliant.org kao Alat za Edukatore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Scholarly Warmth (Warm off-white, deep blue/teal, amber accent) -->
+    <!-- Application Structure Plan: A single-page, vertical scrolling application with a sticky top navigation. The structure is thematic, starting with a general overview ('Što je Brilliant?'), moving to its pedagogical foundation, then to interactive practical examples (tabbed for Math/Informatics), key features, tools for educators (with a visualization), pros/cons, and finally practical details like pricing. This flow guides the user from the 'why' to the 'how', making the information digestible and more engaging than a linear report. -->
+    <!-- Visualization & Content Choices: 1. Main Content -> Interactive Tabs: The core "Application in Teaching" section is split into 'Matematika' and 'Informatika' tabs. Goal: Organize dense, parallel information. Method: JS toggles content visibility. Justification: Prevents overwhelming the user with a long wall of text and allows them to focus on their subject of interest. 2. Educator Benefits -> Bar Chart (Chart.js): Visualizes the qualitative benefits mentioned for educators. Goal: Compare/Inform. Method: A horizontal bar chart with illustrative data. Justification: A chart provides a high-impact summary of the benefits, making them more memorable than a bulleted list. Library: Chart.js (Canvas). 3. Features/Pedagogy -> Icon-based Cards: Short text blocks with icons. Goal: Inform/Organize. Method: Tailwind CSS grid. Justification: Breaks down complex ideas into scannable, visually appealing chunks. NO SVG/Mermaid used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfcf9;
+            color: #1f2937;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .nav-scrolled {
+            background-color: rgba(253, 252, 249, 0.8);
+            backdrop-filter: blur(10px);
+            --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+        }
+        .tab-btn {
+            transition: all 0.3s ease;
+        }
+        .tab-btn.active {
+            background-color: #0d9488;
+            color: white;
+        }
+        .tab-btn:not(.active) {
+            background-color: #f0fdfa;
+            color: #115e59;
+        }
+    </style>
+</head>
+<body class="antialiased">
 
-\f0\fs24 \cf0 <!DOCTYPE html>\
-<html lang="hr">\
-<head>\
-    <meta charset="UTF-8">\
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
-    <title>Interaktivni Prikaz: Brilliant.org kao Alat za Edukatore</title>\
-    <script src="https://cdn.tailwindcss.com"></script>\
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>\
-    <link rel="preconnect" href="https://fonts.googleapis.com">\
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">\
-    <!-- Chosen Palette: Scholarly Warmth (Warm off-white, deep blue/teal, amber accent) -->\
-    <!-- Application Structure Plan: A single-page, vertical scrolling application with a sticky top navigation. The structure is thematic, starting with a general overview ('\'8ato je Brilliant?'), moving to its pedagogical foundation, then to interactive practical examples (tabbed for Math/Informatics), key features, tools for educators (with a visualization), pros/cons, and finally practical details like pricing. This flow guides the user from the 'why' to the 'how', making the information digestible and more engaging than a linear report. -->\
-    <!-- Visualization & Content Choices: 1. Main Content -> Interactive Tabs: The core "Application in Teaching" section is split into 'Matematika' and 'Informatika' tabs. Goal: Organize dense, parallel information. Method: JS toggles content visibility. Justification: Prevents overwhelming the user with a long wall of text and allows them to focus on their subject of interest. 2. Educator Benefits -> Bar Chart (Chart.js): Visualizes the qualitative benefits mentioned for educators. Goal: Compare/Inform. Method: A horizontal bar chart with illustrative data. Justification: A chart provides a high-impact summary of the benefits, making them more memorable than a bulleted list. Library: Chart.js (Canvas). 3. Features/Pedagogy -> Icon-based Cards: Short text blocks with icons. Goal: Inform/Organize. Method: Tailwind CSS grid. Justification: Breaks down complex ideas into scannable, visually appealing chunks. NO SVG/Mermaid used. -->\
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->\
-    <style>\
-        body \{\
-            font-family: 'Inter', sans-serif;\
-            background-color: #fdfcf9;\
-            color: #1f2937;\
-        \}\
-        .chart-container \{\
-            position: relative;\
-            width: 100%;\
-            max-width: 700px;\
-            margin-left: auto;\
-            margin-right: auto;\
-            height: 300px;\
-            max-height: 400px;\
-        \}\
-        @media (min-width: 768px) \{\
-            .chart-container \{\
-                height: 350px;\
-            \}\
-        \}\
-        .sticky-nav \{\
-            position: sticky;\
-            top: 0;\
-            z-index: 50;\
-            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;\
-        \}\
-        .nav-scrolled \{\
-            background-color: rgba(253, 252, 249, 0.8);\
-            backdrop-filter: blur(10px);\
-            --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);\
-            --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);\
-            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\
-        \}\
-        .tab-btn \{\
-            transition: all 0.3s ease;\
-        \}\
-        .tab-btn.active \{\
-            background-color: #0d9488;\
-            color: white;\
-        \}\
-        .tab-btn:not(.active) \{\
-            background-color: #f0fdfa;\
-            color: #115e59;\
-        \}\
-    </style>\
-</head>\
-<body class="antialiased">\
-\
-    <header id="navbar" class="sticky-nav">\
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">\
-            <div class="flex items-center justify-between">\
-                <div class="flex-shrink-0">\
-                    <a href="#top" class="text-xl font-bold text-teal-700">Brilliant.org u Praksi</a>\
-                </div>\
-                <div class="hidden md:block">\
-                    <div class="ml-10 flex items-baseline space-x-4">\
-                        <a href="#pedagogy" class="text-gray-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium">Pedagogija</a>\
-                        <a href="#application" class="text-gray-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium">Primjena</a>\
-                        <a href="#tools" class="text-gray-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium">Alati</a>\
-                        <a href="#pros_cons" class="text-gray-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium">Prednosti</a>\
-                        <a href="#pricing" class="text-gray-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium">Cijena</a>\
-                    </div>\
-                </div>\
-            </div>\
-        </nav>\
-    </header>\
-\
-    <main id="top">\
-        <!-- Hero Section -->\
-        <section class="bg-teal-50 py-16 sm:py-24">\
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">\
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-teal-800 tracking-tight">\
-                    Brilliant.org kao alat za suvremenog edukatora\
-                </h1>\
-                <p class="mt-6 max-w-2xl mx-auto text-lg text-teal-700">\
-                    Interaktivni prikaz primjene, pedago\'9akih temelja i prakti\uc0\u269 nih prednosti platforme Brilliant.org u nastavi matematike i informatike.\
-                </p>\
-            </div>\
-        </section>\
-\
-        <!-- What is Brilliant Section -->\
-        <section class="py-16 sm:py-20">\
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">\
-                <div class="lg:text-center">\
-                    <h2 class="text-base text-teal-600 font-semibold tracking-wide uppercase">\'8ato je Brilliant.org?</h2>\
-                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">\
-                        Interaktivni partner u u\uc0\u269 enju STEM-a\
-                    </p>\
-                    <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">\
-                        Brilliant.org je online platforma koja kroz interaktivne lekcije, vizualne prikaze i problemske zadatke poti\uc0\u269 e aktivno razmi\'9aljanje i razvoj vje\'9atina rje\'9aavanja problema. Umjesto pasivnog gledanja videozapisa, Brilliant korisnike stavlja u sredi\'9ate procesa u\u269 enja.\
-                    </p>\
-                </div>\
-            </div>\
-        </section>\
-\
-        <!-- Pedagogy Section -->\
-        <section id="pedagogy" class="bg-gray-50 py-16 sm:py-20">\
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">\
-                <div class="lg:text-center">\
-                    <h2 class="text-base text-teal-600 font-semibold tracking-wide uppercase">Pedago\'9aka osnova</h2>\
-                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">\
-                        U\uc0\u269 enje kroz aktivno gra\u273 enje znanja\
-                    </p>\
-                </div>\
-                <div class="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-3">\
-                    <div class="p-6 bg-white rounded-lg shadow-md">\
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-teal-500 text-white text-2xl font-bold">\uc0\u55358 \u56800 </div>\
-                        <h3 class="mt-5 text-lg leading-6 font-medium text-gray-900">Konstruktivizam</h3>\
-                        <p class="mt-2 text-base text-gray-600">U\uc0\u269 enici aktivno grade znanje kroz iskustvo, istra\'9eivanje i povezivanje novih informacija s postoje\u263 im.</p>\
-                    </div>\
-                    <div class="p-6 bg-white rounded-lg shadow-md">\
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-teal-500 text-white text-2xl font-bold">\uc0\u55357 \u56589 </div>\
-                        <h3 class="mt-5 text-lg leading-6 font-medium text-gray-900">U\uc0\u269 enje otkrivanjem</h3>\
-                        <p class="mt-2 text-base text-gray-600">Platforma poti\uc0\u269 e testiranje hipoteza i refleksiju, umjesto pasivnog usvajanja gotovih rje\'9aenja.</p>\
-                    </div>\
-                    <div class="p-6 bg-white rounded-lg shadow-md">\
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-teal-500 text-white text-2xl font-bold">\uc0\u55357 \u56580 </div>\
-                        <h3 class="mt-5 text-lg leading-6 font-medium text-gray-900">Spiralni kurikulum</h3>\
-                        <p class="mt-2 text-base text-gray-600">Koncepti se postupno uvode i produbljuju, omogu\uc0\u263 uju\u263 i nadogradnju znanja vlastitim tempom.</p>\
-                    </div>\
-                </div>\
-            </div>\
-        </section>\
-\
-        <!-- Application in Teaching Section -->\
-        <section id="application" class="py-16 sm:py-20">\
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">\
-                <div class="lg:text-center">\
-                    <h2 class="text-base text-teal-600 font-semibold tracking-wide uppercase">Primjena u praksi</h2>\
-                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">\
-                        Iskustva iz u\uc0\u269 ionice\
-                    </p>\
-                </div>\
-                <div class="mt-10 flex justify-center space-x-2 sm:space-x-4">\
-                    <button id="btn-math" class="tab-btn active px-4 py-2 sm:px-6 sm:py-3 font-semibold rounded-lg shadow-md">Matematika</button>\
-                    <button id="btn-cs" class="tab-btn px-4 py-2 sm:px-6 sm:py-3 font-semibold rounded-lg shadow-md">Informatika</button>\
-                </div>\
-\
-                <div id="content-math" class="mt-12">\
-                    <div class="bg-white p-8 rounded-lg shadow-lg">\
-                        <h3 class="text-2xl font-bold text-teal-700 mb-4">Primjena u nastavi matematike</h3>\
-                        <p class="text-gray-600 mb-6">Brilliant se pokazao kao iznimno koristan alat za produbljivanje razumijevanja, od razdoblja online nastave do danas. Posebno je u\uc0\u269 inkovit za teme poput linearnih jednad\'9ebi, funkcija i sustava jednad\'9ebi, gdje interaktivni pristup poma\'9ee u\u269 enicima da "otkriju" rje\'9aenja.</p>\
-                        <div class="space-y-4">\
-                            <h4 class="font-semibold text-lg text-gray-800">Konkretan primjer: Sustavi linearnih jednad\'9ebi</h4>\
-                            <p class="text-gray-600">U\uc0\u269 enici interaktivno istra\'9euju metode supstitucije, eliminacije i grafi\u269 kog prikaza. To ih poti\u269 e na analizu i razumijevanje za\'9ato odre\u273 ena metoda funkcionira, umjesto u\u269 enja napamet.</p>\
-                            <h4 class="font-semibold text-lg text-gray-800">Priprema za natjecanja: Contest Math</h4>\
-                            <p class="text-gray-600">Strukturirani te\uc0\u269 aj s 128 lekcija u stilu natjecanja poti\u269 e brzo razmi\'9aljanje i preciznost. Iako izazovan, pristupa\u269 an je za sve razine i omogu\u263 uje u\u269 enicima da napreduju vlastitim tempom.</p>\
-                        </div>\
-                    </div>\
-                </div>\
-\
-                <div id="content-cs" class="mt-12 hidden">\
-                    <div class="bg-white p-8 rounded-lg shadow-lg">\
-                        <h3 class="text-2xl font-bold text-teal-700 mb-4">Primjena u nastavi informatike</h3>\
-                        <p class="text-gray-600 mb-6">U nastavi informatike, Brilliant slu\'9ei kao izvrstan uvodni alat za razvoj algoritamskog razmi\'9aljanja. Kroz vizualne zadatke i problemske izazove, u\uc0\u269 enici usvajaju temeljne koncepte programiranja.</p>\
-                        <div class="space-y-4">\
-                            <h4 class="font-semibold text-lg text-gray-800">5. razred: Uvod u programiranje</h4>\
-                            <p class="text-gray-600">Kroz te\uc0\u269 aj "Programming with Variables", u\u269 enici na zabavan na\u269 in, kroz "slagalice", usvajaju koncepte varijabli i petlji, prije rada u konkretnom programskom jeziku.</p>\
-                             <h4 class="font-semibold text-lg text-gray-800">6. razred: Algoritamsko razmi\'9aljanje</h4>\
-                            <p class="text-gray-600">Te\uc0\u269 aj "Thinking in Code" s lekcijama poput "Looping with Logic" i "Nesting Logic" poti\u269 e znati\'9eelju i dublje razumijevanje programerske logike.</p>\
-                            <h4 class="font-semibold text-lg text-gray-800">7. i 8. razred: Konsolidacija znanja</h4>\
-                            <p class="text-gray-600">Napredniji u\uc0\u269 enici koriste "Programming with Python" za produbljivanje znanja i pripremu za natjecanja, obra\u273 uju\u263 i teme poput Collatzove hipoteze.</p>\
-                        </div>\
-                    </div>\
-                </div>\
-            </div>\
-        </section>\
-\
-        <!-- Educator Tools Section -->\
-        <section id="tools" class="bg-gray-50 py-16 sm:py-20">\
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">\
-                <div class="lg:text-center">\
-                    <h2 class="text-base text-teal-600 font-semibold tracking-wide uppercase">Alati za edukatore</h2>\
-                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">\
-                        Osna\'9eivanje nastavnika podacima\
-                    </p>\
-                    <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">\
-                        Brilliant for Educators omogu\uc0\u263 uje pra\u263 enje napretka u\u269 enika kroz intuitivne vizualne alate, poma\'9eu\u263 i u formativnoj evaluaciji i personalizaciji nastave.\
-                    </p>\
-                </div>\
-                <div class="mt-12">\
-                    <div class="chart-container">\
-                        <canvas id="benefitsChart"></canvas>\
-                    </div>\
-                </div>\
-            </div>\
-        </section>\
-\
-        <!-- Pros and Cons Section -->\
-        <section id="pros_cons" class="py-16 sm:py-20">\
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">\
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">\
-                    <div>\
-                        <h3 class="text-2xl font-bold text-green-600 mb-4">Prednosti u praksi</h3>\
-                        <ul class="space-y-3 text-gray-600">\
-                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">\uc0\u10004 </span> Pove\u263 ana motivacija i anga\'9eman u\u269 enika.</li>\
-                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">\uc0\u10004 </span> Mogu\u263 nost samostalnog u\u269 enja vlastitim tempom.</li>\
-                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">\uc0\u10004 </span> Laka diferencijacija nastave za razli\u269 ite razine znanja.</li>\
-                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">\uc0\u10004 </span> Razvoj dubljeg razumijevanja koncepata, a ne samo memoriranja.</li>\
-                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">\uc0\u10004 </span> Ve\u263 e samopouzdanje u\u269 enika i spremnost na suradnju.</li>\
-                        </ul>\
-                    </div>\
-                    <div>\
-                        <h3 class="text-2xl font-bold text-amber-600 mb-4">Izazovi i rje\'9aenja</h3>\
-                        <ul class="space-y-3 text-gray-600">\
-                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">\uc0\u9888 </span> Neujedna\u269 ena dostupnost digitalnih ure\u273 aja kod ku\u263 e.</li>\
-                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">\uc0\u9888 </span> Po\u269 etna digitalna nesigurnost kod nekih u\u269 enika.</li>\
-                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">\uc0\u10004 </span> Rje\'9aenje: Uvodne radionice, timski rad i fleksibilno planiranje zadataka.</li>\
-                        </ul>\
-                    </div>\
-                </div>\
-            </div>\
-        </section>\
-\
-        <!-- Pricing Section -->\
-        <section id="pricing" class="bg-gray-50 py-16 sm:py-20">\
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">\
-                <div class="lg:text-center">\
-                    <h2 class="text-base text-teal-600 font-semibold tracking-wide uppercase">Cijena i pristup</h2>\
-                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">\
-                        Fleksibilne opcije za sve\
-                    </p>\
-                </div>\
-                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">\
-                    <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-gray-300">\
-                        <h3 class="text-xl font-semibold text-gray-800">Besplatan pristup</h3>\
-                        <p class="mt-4 text-gray-600">Omogu\uc0\u263 uje pristup prvom poglavlju svakog te\u269 aja i dnevnim izazovima.</p>\
-                    </div>\
-                    <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-teal-500 transform md:scale-105">\
-                        <h3 class="text-xl font-semibold text-gray-800">Premium</h3>\
-                        <p class="mt-4 text-gray-600">Neograni\uc0\u269 en pristup svim lekcijama, te\u269 ajevima i sadr\'9eaju. Nudi se mjese\u269 na i godi\'9anja pretplata.</p>\
-                        <p class="text-2xl font-bold text-teal-600 mt-4">od ~8,75\'80/mj.</p>\
-                    </div>\
-                    <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-amber-400">\
-                        <h3 class="text-xl font-semibold text-gray-800">Brilliant for Educators</h3>\
-                        <p class="mt-4 text-gray-600">Potpuno besplatan pristup za nastavnike i njihove u\uc0\u269 enike uz dokaz o zaposlenju (K-12).</p>\
-                    </div>\
-                </div>\
-            </div>\
-        </section>\
-\
-        <!-- Conclusion Section -->\
-        <footer class="bg-teal-800 text-white py-12">\
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">\
-                <h2 class="text-3xl font-extrabold mb-4">Zaklju\uc0\u269 ak</h2>\
-                <p class="max-w-3xl mx-auto text-teal-100">\
-                    Integracija Brilliant.org-a u obrazovni proces nije samo trend, ve\uc0\u263  nu\'9enost koja osna\'9euje u\u269 enike i poti\u269 e njihovu strast prema STEM podru\u269 jima. Njegova sposobnost da u\u269 enje u\u269 ini dinami\u269 nim, zabavnim i relevantnim \u269 ini ga neprocjenjivim alatom u pripremi u\u269 enika za izazove 21. stolje\u263 a.\
-                </p>\
-            </div>\
-        </footer>\
-    </main>\
-\
-    <script>\
-        document.addEventListener('DOMContentLoaded', function() \{\
-            // Tab switching logic\
-            const btnMath = document.getElementById('btn-math');\
-            const btnCs = document.getElementById('btn-cs');\
-            const contentMath = document.getElementById('content-math');\
-            const contentCs = document.getElementById('content-cs');\
-\
-            btnMath.addEventListener('click', () => \{\
-                contentMath.classList.remove('hidden');\
-                contentCs.classList.add('hidden');\
-                btnMath.classList.add('active');\
-                btnCs.classList.remove('active');\
-            \});\
-\
-            btnCs.addEventListener('click', () => \{\
-                contentCs.classList.remove('hidden');\
-                contentMath.classList.add('hidden');\
-                btnCs.classList.add('active');\
-                btnMath.classList.remove('active');\
-            \});\
-            \
-            // Chart.js implementation\
-            const ctx = document.getElementById('benefitsChart').getContext('2d');\
-            const benefitsChart = new Chart(ctx, \{\
-                type: 'bar',\
-                data: \{\
-                    labels: ['Pove\uc0\u263 ana motivacija', 'Diferencijacija nastave', 'Razvoj kriti\u269 kog mi\'9aljenja', 'Samostalnost u\u269 enika', 'Bolje razumijevanje'],\
-                    datasets: [\{\
-                        label: 'Utjecaj na nastavu (%)',\
-                        data: [92, 88, 85, 95, 90],\
-                        backgroundColor: [\
-                            'rgba(13, 148, 136, 0.6)',\
-                            'rgba(15, 118, 110, 0.6)',\
-                            'rgba(17, 94, 89, 0.6)',\
-                            'rgba(19, 78, 74, 0.6)',\
-                            'rgba(20, 83, 45, 0.6)'\
-                        ],\
-                        borderColor: [\
-                            'rgba(13, 148, 136, 1)',\
-                            'rgba(15, 118, 110, 1)',\
-                            'rgba(17, 94, 89, 1)',\
-                            'rgba(19, 78, 74, 1)',\
-                            'rgba(20, 83, 45, 1)'\
-                        ],\
-                        borderWidth: 1\
-                    \}]\
-                \},\
-                options: \{\
-                    indexAxis: 'y',\
-                    responsive: true,\
-                    maintainAspectRatio: false,\
-                    plugins: \{\
-                        legend: \{\
-                            display: false\
-                        \},\
-                        tooltip: \{\
-                            callbacks: \{\
-                                label: function(context) \{\
-                                    let label = context.dataset.label || '';\
-                                    if (label) \{\
-                                        label += ': ';\
-                                    \}\
-                                    if (context.parsed.x !== null) \{\
-                                        label += context.parsed.x + '%';\
-                                    \}\
-                                    return label;\
-                                \}\
-                            \}\
-                        \}\
-                    \},\
-                    scales: \{\
-                        x: \{\
-                            beginAtZero: true,\
-                            max: 100,\
-                            ticks: \{\
-                                callback: function(value) \{\
-                                    return value + "%"\
-                                \}\
-                            \}\
-                        \}\
-                    \}\
-                \}\
-            \});\
-\
-            // Sticky nav scroll effect\
-            const navbar = document.getElementById('navbar');\
-            window.onscroll = function() \{\
-                if (window.scrollY > 50) \{\
-                    navbar.classList.add('nav-scrolled');\
-                \} else \{\
-                    navbar.classList.remove('nav-scrolled');\
-                \}\
-            \};\
-            \
-            // Smooth scroll\
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => \{\
-                anchor.addEventListener('click', function (e) \{\
-                    e.preventDefault();\
-                    document.querySelector(this.getAttribute('href')).scrollIntoView(\{\
-                        behavior: 'smooth'\
-                    \});\
-                \});\
-            \});\
-\
-        \});\
-    </script>\
-</body>\
-</html>\
-}
+    <header id="navbar" class="sticky-nav">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex-shrink-0">
+                    <a href="#top" class="text-xl font-bold text-teal-700">Brilliant.org u Praksi</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#pedagogy" class="text-gray-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium">Pedagogija</a>
+                        <a href="#application" class="text-gray-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium">Primjena</a>
+                        <a href="#tools" class="text-gray-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium">Alati</a>
+                        <a href="#pros_cons" class="text-gray-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium">Prednosti</a>
+                        <a href="#pricing" class="text-gray-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium">Cijena</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="top">
+        <!-- Hero Section -->
+        <section class="bg-teal-50 py-16 sm:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-teal-800 tracking-tight">
+                    Brilliant.org kao alat za suvremenog edukatora
+                </h1>
+                <p class="mt-6 max-w-2xl mx-auto text-lg text-teal-700">
+                    Interaktivni prikaz primjene, pedagoških temelja i praktičnih prednosti platforme Brilliant.org u nastavi matematike i informatike.
+                </p>
+            </div>
+        </section>
+
+        <!-- What is Brilliant Section -->
+        <section class="py-16 sm:py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:text-center">
+                    <h2 class="text-base text-teal-600 font-semibold tracking-wide uppercase">Što je Brilliant.org?</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        Interaktivni partner u učenju STEM-a
+                    </p>
+                    <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                        Brilliant.org je online platforma koja kroz interaktivne lekcije, vizualne prikaze i problemske zadatke potiče aktivno razmišljanje i razvoj vještina rješavanja problema. Umjesto pasivnog gledanja videozapisa, Brilliant korisnike stavlja u središte procesa učenja.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pedagogy Section -->
+        <section id="pedagogy" class="bg-gray-50 py-16 sm:py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:text-center">
+                    <h2 class="text-base text-teal-600 font-semibold tracking-wide uppercase">Pedagoška osnova</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        Učenje kroz aktivno građenje znanja
+                    </p>
+                </div>
+                <div class="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+                    <div class="p-6 bg-white rounded-lg shadow-md">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-teal-500 text-white text-2xl font-bold">🧠</div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-gray-900">Konstruktivizam</h3>
+                        <p class="mt-2 text-base text-gray-600">Učenici aktivno grade znanje kroz iskustvo, istraživanje i povezivanje novih informacija s postojećim.</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-lg shadow-md">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-teal-500 text-white text-2xl font-bold">🔍</div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-gray-900">Učenje otkrivanjem</h3>
+                        <p class="mt-2 text-base text-gray-600">Platforma potiče testiranje hipoteza i refleksiju, umjesto pasivnog usvajanja gotovih rješenja.</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-lg shadow-md">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-teal-500 text-white text-2xl font-bold">🔄</div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-gray-900">Spiralni kurikulum</h3>
+                        <p class="mt-2 text-base text-gray-600">Koncepti se postupno uvode i produbljuju, omogućujući nadogradnju znanja vlastitim tempom.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application in Teaching Section -->
+        <section id="application" class="py-16 sm:py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:text-center">
+                    <h2 class="text-base text-teal-600 font-semibold tracking-wide uppercase">Primjena u praksi</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        Iskustva iz učionice
+                    </p>
+                </div>
+                <div class="mt-10 flex justify-center space-x-2 sm:space-x-4">
+                    <button id="btn-math" class="tab-btn active px-4 py-2 sm:px-6 sm:py-3 font-semibold rounded-lg shadow-md">Matematika</button>
+                    <button id="btn-cs" class="tab-btn px-4 py-2 sm:px-6 sm:py-3 font-semibold rounded-lg shadow-md">Informatika</button>
+                </div>
+
+                <div id="content-math" class="mt-12">
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold text-teal-700 mb-4">Primjena u nastavi matematike</h3>
+                        <p class="text-gray-600 mb-6">Brilliant se pokazao kao iznimno koristan alat za produbljivanje razumijevanja, od razdoblja online nastave do danas. Posebno je učinkovit za teme poput linearnih jednadžbi, funkcija i sustava jednadžbi, gdje interaktivni pristup pomaže učenicima da "otkriju" rješenja.</p>
+                        <div class="space-y-4">
+                            <h4 class="font-semibold text-lg text-gray-800">Konkretan primjer: Sustavi linearnih jednadžbi</h4>
+                            <p class="text-gray-600">Učenici interaktivno istražuju metode supstitucije, eliminacije i grafičkog prikaza. To ih potiče na analizu i razumijevanje zašto određena metoda funkcionira, umjesto učenja napamet.</p>
+                            <h4 class="font-semibold text-lg text-gray-800">Priprema za natjecanja: Contest Math</h4>
+                            <p class="text-gray-600">Strukturirani tečaj s 128 lekcija u stilu natjecanja potiče brzo razmišljanje i preciznost. Iako izazovan, pristupačan je za sve razine i omogućuje učenicima da napreduju vlastitim tempom.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="content-cs" class="mt-12 hidden">
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold text-teal-700 mb-4">Primjena u nastavi informatike</h3>
+                        <p class="text-gray-600 mb-6">U nastavi informatike, Brilliant služi kao izvrstan uvodni alat za razvoj algoritamskog razmišljanja. Kroz vizualne zadatke i problemske izazove, učenici usvajaju temeljne koncepte programiranja.</p>
+                        <div class="space-y-4">
+                            <h4 class="font-semibold text-lg text-gray-800">5. razred: Uvod u programiranje</h4>
+                            <p class="text-gray-600">Kroz tečaj "Programming with Variables", učenici na zabavan način, kroz "slagalice", usvajaju koncepte varijabli i petlji, prije rada u konkretnom programskom jeziku.</p>
+                             <h4 class="font-semibold text-lg text-gray-800">6. razred: Algoritamsko razmišljanje</h4>
+                            <p class="text-gray-600">Tečaj "Thinking in Code" s lekcijama poput "Looping with Logic" i "Nesting Logic" potiče znatiželju i dublje razumijevanje programerske logike.</p>
+                            <h4 class="font-semibold text-lg text-gray-800">7. i 8. razred: Konsolidacija znanja</h4>
+                            <p class="text-gray-600">Napredniji učenici koriste "Programming with Python" za produbljivanje znanja i pripremu za natjecanja, obrađujući teme poput Collatzove hipoteze.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Educator Tools Section -->
+        <section id="tools" class="bg-gray-50 py-16 sm:py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:text-center">
+                    <h2 class="text-base text-teal-600 font-semibold tracking-wide uppercase">Alati za edukatore</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        Osnaživanje nastavnika podacima
+                    </p>
+                    <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                        Brilliant for Educators omogućuje praćenje napretka učenika kroz intuitivne vizualne alate, pomažući u formativnoj evaluaciji i personalizaciji nastave.
+                    </p>
+                </div>
+                <div class="mt-12">
+                    <div class="chart-container">
+                        <canvas id="benefitsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pros and Cons Section -->
+        <section id="pros_cons" class="py-16 sm:py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-bold text-green-600 mb-4">Prednosti u praksi</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">✔</span> Povećana motivacija i angažman učenika.</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">✔</span> Mogućnost samostalnog učenja vlastitim tempom.</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">✔</span> Laka diferencijacija nastave za različite razine znanja.</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">✔</span> Razvoj dubljeg razumijevanja koncepata, a ne samo memoriranja.</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">✔</span> Veće samopouzdanje učenika i spremnost na suradnju.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-amber-600 mb-4">Izazovi i rješenja</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">⚠</span> Neujednačena dostupnost digitalnih uređaja kod kuće.</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2 mt-1">⚠</span> Početna digitalna nesigurnost kod nekih učenika.</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">✔</span> Rješenje: Uvodne radionice, timski rad i fleksibilno planiranje zadataka.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="bg-gray-50 py-16 sm:py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:text-center">
+                    <h2 class="text-base text-teal-600 font-semibold tracking-wide uppercase">Cijena i pristup</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        Fleksibilne opcije za sve
+                    </p>
+                </div>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-gray-300">
+                        <h3 class="text-xl font-semibold text-gray-800">Besplatan pristup</h3>
+                        <p class="mt-4 text-gray-600">Omogućuje pristup prvom poglavlju svakog tečaja i dnevnim izazovima.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-teal-500 transform md:scale-105">
+                        <h3 class="text-xl font-semibold text-gray-800">Premium</h3>
+                        <p class="mt-4 text-gray-600">Neograničen pristup svim lekcijama, tečajevima i sadržaju. Nudi se mjesečna i godišnja pretplata.</p>
+                        <p class="text-2xl font-bold text-teal-600 mt-4">od ~8,75€/mj.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-amber-400">
+                        <h3 class="text-xl font-semibold text-gray-800">Brilliant for Educators</h3>
+                        <p class="mt-4 text-gray-600">Potpuno besplatan pristup za nastavnike i njihove učenike uz dokaz o zaposlenju (K-12).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion Section -->
+        <footer class="bg-teal-800 text-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-extrabold mb-4">Zaključak</h2>
+                <p class="max-w-3xl mx-auto text-teal-100">
+                    Integracija Brilliant.org-a u obrazovni proces nije samo trend, već nužnost koja osnažuje učenike i potiče njihovu strast prema STEM područjima. Njegova sposobnost da učenje učini dinamičnim, zabavnim i relevantnim čini ga neprocjenjivim alatom u pripremi učenika za izazove 21. stoljeća.
+                </p>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching logic
+            const btnMath = document.getElementById('btn-math');
+            const btnCs = document.getElementById('btn-cs');
+            const contentMath = document.getElementById('content-math');
+            const contentCs = document.getElementById('content-cs');
+
+            btnMath.addEventListener('click', () => {
+                contentMath.classList.remove('hidden');
+                contentCs.classList.add('hidden');
+                btnMath.classList.add('active');
+                btnCs.classList.remove('active');
+            });
+
+            btnCs.addEventListener('click', () => {
+                contentCs.classList.remove('hidden');
+                contentMath.classList.add('hidden');
+                btnCs.classList.add('active');
+                btnMath.classList.remove('active');
+            });
+            
+            // Chart.js implementation
+            const ctx = document.getElementById('benefitsChart').getContext('2d');
+            const benefitsChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Povećana motivacija', 'Diferencijacija nastave', 'Razvoj kritičkog mišljenja', 'Samostalnost učenika', 'Bolje razumijevanje'],
+                    datasets: [{
+                        label: 'Utjecaj na nastavu (%)',
+                        data: [92, 88, 85, 95, 90],
+                        backgroundColor: [
+                            'rgba(13, 148, 136, 0.6)',
+                            'rgba(15, 118, 110, 0.6)',
+                            'rgba(17, 94, 89, 0.6)',
+                            'rgba(19, 78, 74, 0.6)',
+                            'rgba(20, 83, 45, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(13, 148, 136, 1)',
+                            'rgba(15, 118, 110, 1)',
+                            'rgba(17, 94, 89, 1)',
+                            'rgba(19, 78, 74, 1)',
+                            'rgba(20, 83, 45, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.x !== null) {
+                                        label += context.parsed.x + '%';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + "%"
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Sticky nav scroll effect
+            const navbar = document.getElementById('navbar');
+            window.onscroll = function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('nav-scrolled');
+                } else {
+                    navbar.classList.remove('nav-scrolled');
+                }
+            };
+            
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
