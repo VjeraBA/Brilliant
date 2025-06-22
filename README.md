@@ -1,2 +1,2 @@
 # Brilliant.org: STEM u praksi
-Ova stranica je interaktivni pregled platforme Brilliant.org, dizajnirana da edukatorima (posebno nastavnicima matematike i informatike) prikaže kako se Brilliant.org može koristiti u praksi.
+Ova stranica nudi interaktivni pregled primjene Brilliant.org platforme kao suvremenog edukacijskog alata u nastavi STEM predmeta (znanost, tehnologija, inženjerstvo i matematika) na osnovnoškolskoj i srednjoškolskoj razini. 
