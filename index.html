@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Scholarly Warmth (Warm off-white, deep blue/teal, amber accent) -->
-    <!-- Application Structure Plan: A single-page, vertical scrolling application with a sticky top navigation. The structure is thematic, starting with a general overview ('Što je Brilliant?'), moving to its pedagogical foundation, then to interactive practical examples (tabbed for Math/Informatics), key features, tools for educators (with a visualization), pros/cons, and finally practical details like pricing. This flow guides the user from the 'why' to the 'how', making the information digestible and more engaging than a linear report. -->
+    <!-- Application Structure Plan: A single-page, vertical scrolling application with a sticky top navigation. The structure is thematic, starting with a general overview ('Što je Brilliant?'), moving to its pedagogical foundation, then to interactive practical examples (tabbed for Math/Informatika), key features, tools for educators (with a visualization), pros/cons, and finally practical details like pricing. This flow guides the user from the 'why' to the 'how', making the information digestible and more engaging than a linear report. -->
     <!-- Visualization & Content Choices: 1. Main Content -> Interactive Tabs: The core "Application in Teaching" section is split into 'Matematika' and 'Informatika' tabs. Goal: Organize dense, parallel information. Method: JS toggles content visibility. Justification: Prevents overwhelming the user with a long wall of text and allows them to focus on their subject of interest. 2. Educator Benefits -> Bar Chart (Chart.js): Visualizes the qualitative benefits mentioned for educators. Goal: Compare/Inform. Method: A horizontal bar chart with illustrative data. Justification: A chart provides a high-impact summary of the benefits, making them more memorable than a bulleted list. Library: Chart.js (Canvas). 3. Features/Pedagogy -> Icon-based Cards: Short text blocks with icons. Goal: Inform/Organize. Method: Tailwind CSS grid. Justification: Breaks down complex ideas into scannable, visually appealing chunks. NO SVG/Mermaid used. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
@@ -97,12 +97,12 @@
         <section class="py-16 sm:py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="lg:text-center">
-                    <h2 class="text-base text-teal-600 font-semibold tracking-wide uppercase">Što je Brilliant.org?</h2>
+                    <h2 class="text-base text-teal-600 font-semibold tracking-wide uppercase">Što je <a href="https://brilliant.org/" target="_blank" class="text-teal-700 hover:underline">Brilliant.org</a>?</h2>
                     <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
                         Interaktivni partner u učenju STEM-a
                     </p>
                     <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                        Brilliant.org je online platforma koja kroz interaktivne lekcije, vizualne prikaze i problemske zadatke potiče aktivno razmišljanje i razvoj vještina rješavanja problema. Umjesto pasivnog gledanja videozapisa, Brilliant korisnike stavlja u središte procesa učenja.
+                        <a href="https://brilliant.org/" target="_blank" class="text-teal-700 hover:underline">Brilliant.org</a> je online platforma koja kroz interaktivne lekcije, vizualne prikaze i problemske zadatke potiče aktivno razmišljanje i razvoj vještina rješavanja problema. Umjesto pasivnog gledanja videozapaza, Brilliant korisnike stavlja u središte procesa učenja.
                     </p>
                 </div>
             </div>
@@ -159,7 +159,7 @@
                             <h4 class="font-semibold text-lg text-gray-800">Konkretan primjer: Sustavi linearnih jednadžbi</h4>
                             <p class="text-gray-600">Učenici interaktivno istražuju metode supstitucije, eliminacije i grafičkog prikaza. To ih potiče na analizu i razumijevanje zašto određena metoda funkcionira, umjesto učenja napamet.</p>
                             <h4 class="font-semibold text-lg text-gray-800">Priprema za natjecanja: Contest Math</h4>
-                            <p class="text-gray-600">Strukturirani tečaj s 128 lekcija u stilu natjecanja potiče brzo razmišljanje i preciznost. Iako izazovan, pristupačan je za sve razine i omogućuje učenicima da napreduju vlastitim tempom.</p>
+                            <p class="text-gray-600">Strukturirani tečaj pod nazivom <a href="https://brilliant.org/courses/math-competition-fundamentals" target="_blank" class="text-teal-700 hover:underline">Contest Math</a> (Matematička natjecanja) uključuje 128 lekcija s problemskim zadacima u stilu natjecanja, što potiče brzo razmišljanje i preciznost. Zadaci su iz područja geometrije, kombinatorike i vjerojatnosti, brojevnih sustava i faktorizacije te drugih srodnih tema. Iako je sadržaj izazovan, pristupačan je za sve razine i omogućuje učenicima da napreduju vlastitim tempom.</p>
                         </div>
                     </div>
                 </div>
@@ -169,12 +169,12 @@
                         <h3 class="text-2xl font-bold text-teal-700 mb-4">Primjena u nastavi informatike</h3>
                         <p class="text-gray-600 mb-6">U nastavi informatike, Brilliant služi kao izvrstan uvodni alat za razvoj algoritamskog razmišljanja. Kroz vizualne zadatke i problemske izazove, učenici usvajaju temeljne koncepte programiranja.</p>
                         <div class="space-y-4">
-                            <h4 class="font-semibold text-lg text-gray-800">5. razred: Uvod u programiranje</h4>
-                            <p class="text-gray-600">Kroz tečaj "Programming with Variables", učenici na zabavan način, kroz "slagalice", usvajaju koncepte varijabli i petlji, prije rada u konkretnom programskom jeziku.</p>
-                             <h4 class="font-semibold text-lg text-gray-800">6. razred: Algoritamsko razmišljanje</h4>
-                            <p class="text-gray-600">Tečaj "Thinking in Code" s lekcijama poput "Looping with Logic" i "Nesting Logic" potiče znatiželju i dublje razumijevanje programerske logike.</p>
-                            <h4 class="font-semibold text-lg text-gray-800">7. i 8. razred: Konsolidacija znanja</h4>
-                            <p class="text-gray-600">Napredniji učenici koriste "Programming with Python" za produbljivanje znanja i pripremu za natjecanja, obrađujući teme poput Collatzove hipoteze.</p>
+                            <h4 class="font-semibold text-lg text-gray-800">5. razred – Uvod u programiranje</h4>
+                            <p class="text-gray-600">Prije nego što počnemo raditi s bilo kojim programskim jezikom, učenici upisuju tečaj "<a href="https://brilliant.org/courses/creative-coding/" target="_blank" class="text-teal-700 hover:underline">Programming with Variables</a>". Lekcije/aktivnosti su vizualno privlačne i interaktivne, a učenici ih rješavaju svojim tempom, korak po korak. To im iznimno pomaže da razumiju osnovne koncepte kodiranja poput varijabli i petlji. Njihove reakcije su izuzetno pozitivne jer su zadatke doživljavali kao igru, "zabavne slagalice" koje, kad točno riješe, donose bodove, a ukoliko pogriješe, imaju mogućnost pokušati ponovo ili zatražiti HINT. Ovaj pristup osigurava da se temelji programiranja usvoje na zabavan i učinkovit način.</p>
+                            <h4 class="font-semibold text-lg text-gray-800">6. razred – Razvijanje algoritamskog razmišljanje</h4>
+                            <p class="text-gray-600">Učenici koji već imaju početničkog iskustva u programiranju upisuju tečaj "<a href="https://brilliant.org/courses/thinking-in-code/" target="_blank" class="text-teal-700 hover:underline">Thinking in Code</a>". Ovaj tečaj se u zadnjih nekoliko mjeseci uvelike izmijenio i nadopunjen je dodatnim lekcijama, tako da sada uključuje 46 lekcija. Početničke lekcije su uglavnom za zagrijavanje, dok su posebno korisne i izazovne lekcije poput "Looping with Logic" i "Nesting Logic". Kroz ove lekcije potičemo učenike na povećanu znatiželju i omogućavamo im da odaberu najbolji postupak, što ukazuje na dublje razumijevanje programerske logike i sposobnost rješavanja složenijih problema.</p>
+                            <h4 class="font-semibold text-lg text-gray-800">7. i 8. razred – Konsolidacija znanja</h4>
+                            <p class="text-gray-600">Napredniji učenici na izbornoj nastavi informatike uglavnom koriste tečaj "<a href="https://brilliant.org/courses/programming-python/" target="_blank" class="text-teal-700 hover:underline">Programming with Python</a>", koji pokriva teme od osnovnih do naprednih (npr. Collatz hipoteza, rad s rječnicima). Ovaj Brilliantov tečaj se pokazao kao izvrstan alat za pripremu za natjecanja i produbljivanje znanja, nudeći im priliku da savladaju složene koncepte i vježbaju vještine relevantne za stvarna natjecanja.</p>
                         </div>
                     </div>
                 </div>
@@ -185,13 +185,34 @@
         <section id="tools" class="bg-gray-50 py-16 sm:py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="lg:text-center">
-                    <h2 class="text-base text-teal-600 font-semibold tracking-wide uppercase">Alati za edukatore</h2>
+                    <h2 class="text-base text-teal-600 font-semibold tracking-wide uppercase">Brilliant za edukatore</h2>
                     <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                        Osnaživanje nastavnika podacima
+                        Platforma za nastavnike
                     </p>
                     <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                        Brilliant for Educators omogućuje praćenje napretka učenika kroz intuitivne vizualne alate, pomažući u formativnoj evaluaciji i personalizaciji nastave.
+                        <a href="https://educator.brilliant.org/" target="_blank" class="text-teal-700 hover:underline">Brilliant for Educators</a> omogućuje praćenje napretka učenika kroz intuitivne vizualne alate, pomažući u formativnoj evaluaciji i personalizaciji nastave.
                     </p>
+                    <h3 class="mt-8 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
+                        Funkcionalnosti za nastavnike
+                    </h3>
+                </div>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                    <div>
+                        <h4 class="font-semibold text-lg text-gray-800 mb-4">Nastavnici imaju mogućnost:</h4>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-center text-lg"><span class="text-teal-500 mr-2">👥</span> kreiranje virtualnih učionica</li>
+                            <li class="flex items-center text-lg"><span class="text-teal-500 mr-2">➕</span> dodavanje učenika</li>
+                            <li class="flex items-center text-lg"><span class="text-teal-500 mr-2">📊</span> praćenje napretka i angažmana</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg text-gray-800 mb-4">Nastavnici imaju uvid u:</h4>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-center text-lg"><span class="text-teal-500 mr-2">⏱️</span> vrijeme provedeno na zadacima</li>
+                            <li class="flex items-center text-lg"><span class="text-teal-500 mr-2">⭐</span> razinu uspješnosti</li>
+                            <li class="flex items-center text-lg"><span class="text-teal-500 mr-2">🎯</span> područja za poboljšanje</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="mt-12">
                     <div class="chart-container">
@@ -236,19 +257,33 @@
                         Fleksibilne opcije za sve
                     </p>
                 </div>
-                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 lg:grid-cols-3">
                     <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-gray-300">
-                        <h3 class="text-xl font-semibold text-gray-800">Besplatan pristup</h3>
-                        <p class="mt-4 text-gray-600">Omogućuje pristup prvom poglavlju svakog tečaja i dnevnim izazovima.</p>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Besplatan pristup</h3>
+                        <p class="text-gray-600">Omogućuje pristup prvom poglavlju svakog tečaja i dnevnim izazovima.</p>
+                        <p class="text-gray-600 mt-2">Služi za upoznavanje s platformom i njezinim stilom učenja.</p>
                     </div>
                     <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-teal-500 transform md:scale-105">
-                        <h3 class="text-xl font-semibold text-gray-800">Premium</h3>
-                        <p class="mt-4 text-gray-600">Neograničen pristup svim lekcijama, tečajevima i sadržaju. Nudi se mjesečna i godišnja pretplata.</p>
-                        <p class="text-2xl font-bold text-teal-600 mt-4">od ~8,75€/mj.</p>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">7-dnevno besplatno probno razdoblje</h3>
+                        <p class="text-gray-600">Svaki novi korisnik ima pravo na 7 dana besplatnog korištenja Brilliant Premiuma, što uključuje neograničen pristup svim lekcijama.</p>
+                        <p class="text-gray-600 mt-2">Probno razdoblje obično se može započeti unutar 2 dana od pridruživanja platformi. Potrebno je unijeti podatke za plaćanje, a pretplata se automatski aktivira nakon isteka probnog razdoblja ako se ne otkazuje.</p>
                     </div>
-                    <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-amber-400">
-                        <h3 class="text-xl font-semibold text-gray-800">Brilliant for Educators</h3>
-                        <p class="mt-4 text-gray-600">Potpuno besplatan pristup za nastavnike i njihove učenike uz dokaz o zaposlenju (K-12).</p>
+                    <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-blue-600">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Premium verzija</h3>
+                        <p class="text-gray-600">Omogućuje neograničen pristup svim lekcijama, interaktivnim problemima i sadržaju.</p>
+                        <ul class="mt-4 space-y-2 text-gray-600">
+                            <li><span class="font-semibold">Mjesečna pretplata:</span> Cijena je oko 27.99 € mjesečno.</li>
+                            <li><span class="font-semibold">Godišnja pretplata:</span> Oko 161.88 € godišnje, što je otprilike 13.49 € mjesečno (značajna ušteda).</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-amber-400 md:col-span-full">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Za nastavnike i učenike (Brilliant for Educators)</h3>
+                        <p class="text-gray-600">Nastavnici mogu dobiti besplatan pristup svim Premium sadržajima kroz program <a href="https://educator.brilliant.org/" target="_blank" class="text-teal-700 hover:underline">Brilliant for Educators</a>, uz dokaz o zaposlenju u K-12 obrazovnom sustavu.</p>
+                        <p class="text-gray-600 mt-2">Učenici koji su uključeni u virtualni razred nastavnika koji koristi Brilliant for Educators program, automatski dobivaju besplatan pristup svim sadržajima platforme.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-md border-t-4 border-gray-400 md:col-span-full">
+                         <h3 class="text-xl font-semibold text-gray-800 mb-3">Važno za napomenuti</h3>
+                        <p class="text-gray-600">Cijene se mogu razlikovati ovisno o regiji ili povremenim promotivnim ponudama. Za najaktualnije informacije, uvijek je najbolje provjeriti službenu web stranicu <a href="https://brilliant.org/premium" target="_blank" class="text-teal-700 hover:underline">Brilliant.org/premium</a>.</p>
                     </div>
                 </div>
             </div>
